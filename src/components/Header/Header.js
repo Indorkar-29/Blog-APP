@@ -1,10 +1,17 @@
 import React from 'react'
-import CreateBlog from '../CreateBlog/CreateBlog'
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate=useNavigate();
+
   return (
     <div>
-        <button onClick={<CreateBlog/>}>Create Post</button>
+      <button onClick={()=>navigate('/createBlog')}>CREATE BLOG</button>
+      <button onClick={()=>{
+                    localStorage.removeItem("token");
+                    navigate('/');
+                    window.alert("Logged Out Successfully");
+                    document.location.reload();}}>Log Out</button>
     </div>
   )
 }

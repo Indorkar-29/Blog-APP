@@ -5,17 +5,21 @@ const Blogs = () => {
     const [data,setData]=useState([]);
 
     useEffect(()=>{
-        fetch("https://blog-app-server-oheb.onrender.com/allBlogs")
+        fetch("https://blog-app-server-oheb.onrender.com/allBlogs",{
+            headers:{
+                token:localStorage.getItem("token")
+            }
+        })
         .then(res=>res.json())
         .then(result=>{
-            setData(result);
+           setData(result.users[0].blogs);
         }).catch(err=>console.log(err));
     },[]);
 
   return (
     <div>
         <Header/>
-        {/* {
+        {
             data.map(item=>{
                 return (<div key={item._id}>
                             <div><h3>{item.Title}</h3></div>
@@ -24,7 +28,7 @@ const Blogs = () => {
                         </div>
                 )
             }).reverse()
-        } */}
+        }
     </div>
   )
 }

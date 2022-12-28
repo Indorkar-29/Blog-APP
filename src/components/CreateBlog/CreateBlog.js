@@ -62,7 +62,7 @@ const CreateBlog = () => {
         <div>
             <input type="text" value={description} onChange={(e)=>setDescription(e.target.value)} placeholder="Description" />
         </div>
-        <button onClick={()=>postDetails}>SAVE POST</button>
+        <button onClick={()=>postDetails()}>SAVE POST</button>
     </div>
   )
 }
